@@ -12,6 +12,7 @@ Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 Da bi program radio, mora postojati MariaDB server sa bazom podataka: "api_pract" i sledecim tabelama:
+
 CREATE TABLE `korisnik` (
   `id` int(11) NOT NULL,
   `ime` varchar(20) NOT NULL,
