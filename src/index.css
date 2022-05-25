@@ -53,6 +53,18 @@ a {
 }
 
 .leaflet-container {
-  height: 400px;
+  height: 546.2px;
   width: 400px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding: 10px;
+  margin-top: 60px;
+}
+.grid-item {
+  padding: 20px;
+  font-size: 20px;
+  text-align: center;
 }

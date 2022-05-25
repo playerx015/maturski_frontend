@@ -6,7 +6,9 @@ const NOVA_LOKACIJA = {
   lokacija: "",
   tekst: "",
   slika: null,
-  kratak_opis: ""
+  kratak_opis: "",
+  kordinata_x: 0,
+  kordinata_y: 0
 }
 
 const Unos = () => {
@@ -14,19 +16,32 @@ const Unos = () => {
   const [prikaz, setPrikaz] = useState(null);
   const navigate = useNavigate();
   const korisnik = localStorage.getItem("korisnik");
-   console.log("lok", lokacija)
+
   useEffect(() => {
     if(!korisnik) navigate("/");
   }, [])
 
+  const isValid = () => {
+    if(lokacija.ime === "" || lokacija.lokacija === "" || lokacija.tekst === "" || lokacija.slika === null)
+    {
+      alert("popuniti podatke");
+      return false;
+    }
+  }
+
   const handleSubmit = event => {
       event.preventDefault();
+
+      if(!isValid()) return;
+
       const formData = new FormData();
       formData.append("ime", lokacija.ime);
       formData.append("lokacija", lokacija.lokacija);
       formData.append("tekst", lokacija.tekst);
       formData.append("kratak_opis", lokacija.kratak_opis);
       formData.append("slika", lokacija.slika);
+      formData.append("kordinata_x", lokacija.kordinata_x);
+      formData.append("kordinata_y", lokacija.kordinata_y);
 
 
       fetch('http://localhost:3005/api', {
@@ -84,6 +99,17 @@ return (
       <label>Kratak opis:   </label><br />
       <textarea name="kratak_opis"  cols="40" rows="2" value = {lokacija.kratak_opis} onChange = {handleChange} />
     </div>
+
+    <div>
+      <label>Kordinata X:   </label><br />
+      <input name="kordinata_x" value = {lokacija.kordinata_x} onChange = {handleChange} />
+    </div>
+    
+    <div>
+      <label>Kordinata Y:   </label><br />
+      <input name="kordinata_y" value = {lokacija.kordinata_y} onChange = {handleChange} />
+    </div>
+ 
 
     <div>
       <label>Slika:   </label><br />
