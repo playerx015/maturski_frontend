@@ -9,7 +9,7 @@ const Login = () => {
 
     const handleSubmit = event => {
         event.preventDefault();
-        fetch('http://localhost:3005/api/login', {
+        fetch(`${process.env.REACT_APP_API_URL}/api/login`, {
             method: 'POST',
             headers: {
               'Accept': 'application/json',

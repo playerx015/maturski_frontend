@@ -7,7 +7,7 @@ function Home() {
   const[lokacije, setLokacije] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3005/api")
+    fetch(`${process.env.REACT_APP_API_URL}/api`)
     .then(res => res.json())
     .then(data => setLokacije(data))
   },[])

@@ -18,7 +18,7 @@ const Stranica = () => {
     const [lokacija, setLokacija] = useState(null);
     const centar={lat:lokacija?.kordinata_x , lng:lokacija?.kordinata_y}
     useEffect(() => {
-        fetch(`http://localhost:3005/api/${params.id}`)
+        fetch(`${process.env.REACT_APP_API_URL}/api/${params.id}`)
         .then(res => res.json())
         .then(data => setLokacija(data))
       },[])
@@ -49,7 +49,7 @@ const Stranica = () => {
                 </div>
                 <div class="grid-item">
                     <div style={{margin: "auto", width: "80%"}}>
-                        <img src ={ `http://localhost:3005/slike/${lokacija.slika}`} width="100%" />
+                        <img src ={ `${process.env.REACT_APP_API_URL}/slike/${lokacija.slika}`} width="100%" />
                     </div>
                 </div>
                 <div class="grid-item">

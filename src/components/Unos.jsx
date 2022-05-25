@@ -27,6 +27,7 @@ const Unos = () => {
       alert("popuniti podatke");
       return false;
     }
+    return true;
   }
 
   const handleSubmit = event => {
@@ -44,7 +45,7 @@ const Unos = () => {
       formData.append("kordinata_y", lokacija.kordinata_y);
 
 
-      fetch('http://localhost:3005/api', {
+      fetch(`${process.env.REACT_APP_API_URL}/api`, {
           method: 'POST',
           body: formData
         })
